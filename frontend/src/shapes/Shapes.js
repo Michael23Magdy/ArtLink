@@ -5,7 +5,7 @@ const Shapes = {
   LINE: 'line',
   POLYGON: 'polygon',
   TRIANGLE: 'triangle',
-  FREE_HAND: 'freeHand',
+  FREE_HAND: 'freehand',
   
 };
 
