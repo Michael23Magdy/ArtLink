@@ -61,35 +61,44 @@ class PolygonTool extends DrawingTool {
 
 function getPolygonObject(line) {
   // getting center of the shape
+  // Getting the bounding box center
   const points = line.points();
   let minX = points[0];
   let maxX = points[0];
   let minY = points[1];
   let maxY = points[1];
-  for(let i = 0; i < points.length; i+=2){
+  for (let i = 0; i < points.length; i += 2) {
     const x = points[i];
-    const y = points[i+1];
+    const y = points[i + 1];
     minX = Math.min(minX, x);
     maxX = Math.max(maxX, x);
     minY = Math.min(minY, y);
     maxY = Math.max(maxY, y);
   }
 
-  let center_x = (maxX + minX)/2;
-  let center_y = (maxY + minY)/2;
+  const center_x = (maxX + minX) / 2;
+  const center_y = (maxY + minY) / 2;
+
+  // Adjust points to be relative to the new center
+  const adjustedPoints = points.map((coord, i) => {
+    return i % 2 === 0 ? coord - center_x : coord - center_y;
+  });
 
   return {
     id: generateShapeId(),
-    type: Shapes.POLYGON,
+    type: Shapes.POLYGON, // Assuming this is meant to be a polygon
     attributes: {
-      points: line.attrs.points,
+      points: adjustedPoints, // Adjusted points
       fill: line.attrs.fill,
       stroke: line.attrs.stroke,
       strokeWidth: line.attrs.strokeWidth,
-      x: center_x,
-      y: center_y,
+      x: center_x, // Center of the shape
+      y: center_y, // Center of the shape
+      offsetX: 0, // No need for extra offset as points are already relative
+      offsetY: 0, // No need for extra offset
     },
   };
+
 }
 
 export default PolygonTool;
