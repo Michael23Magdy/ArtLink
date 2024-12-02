@@ -60,6 +60,7 @@ class PolygonTool extends DrawingTool {
 }
 
 function getPolygonObject(line) {
+  // getting center of the shape
   const points = line.points();
   let minX = points[0];
   let maxX = points[0];
