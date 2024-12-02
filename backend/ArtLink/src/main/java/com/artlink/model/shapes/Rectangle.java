@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class Rectangle extends Shape2d {
-    private String width;
-    private String height;
+public class Rectangle extends Shape {
+    private Integer width;
+    private Integer height;
 }

@@ -5,8 +5,9 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Text extends Shape2d {
+public class Text extends Shape {
     private String text;
     private String fontSize;
     private String fontFamily;
+    private Integer width;
 }

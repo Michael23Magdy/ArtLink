@@ -5,6 +5,6 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class Circle extends Shape2d {
-    private String radius;
+public class Circle extends Shape {
+    private Integer radius;
 }
