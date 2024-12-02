@@ -67,7 +67,7 @@ class TriangleTool extends DrawingTool {
 
 function getTriangleObject(triangle) {
   // getting center of the shape
-  const points = line.points();
+  const points = triangle.points();
   let minX = points[0];
   let maxX = points[0];
   let minY = points[1];
