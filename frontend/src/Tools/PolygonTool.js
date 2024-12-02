@@ -60,6 +60,23 @@ class PolygonTool extends DrawingTool {
 }
 
 function getPolygonObject(line) {
+  const points = line.points();
+  let minX = points[0];
+  let maxX = points[0];
+  let minY = points[1];
+  let maxY = points[1];
+  for(let i = 0; i < points.length; i+=2){
+    const x = points[i];
+    const y = points[i+1];
+    minX = Math.min(minX, x);
+    maxX = Math.max(maxX, x);
+    minY = Math.min(minY, y);
+    maxY = Math.max(maxY, y);
+  }
+
+  let center_x = (maxX + minX)/2;
+  let center_y = (maxY + minY)/2;
+
   return {
     id: generateShapeId(),
     type: Shapes.POLYGON,
@@ -68,6 +85,8 @@ function getPolygonObject(line) {
       fill: line.attrs.fill,
       stroke: line.attrs.stroke,
       strokeWidth: line.attrs.strokeWidth,
+      x: center_x,
+      y: center_y,
     },
   };
 }
