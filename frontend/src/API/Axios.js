@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { transformAllShapesDtoToShape } from './Mappers';
 
 // Base Axios instance
 const api = axios.create({
@@ -10,7 +11,10 @@ const api = axios.create({
 export const fetchShapes = async (roomId) => {
   try {
     const response = await api.get(`/app/shapes/${roomId}`);
-    return response.data;
+    const fetchedShapes = response.data.map((shape) => 
+      transformAllShapesDtoToShape(shape)
+    );
+    return fetchedShapes; // Corrected variable name
   } catch (error) {
     console.error('Error fetching shapes:', error);
     throw error; // Re-throw error for higher-level handling

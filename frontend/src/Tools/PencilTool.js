@@ -43,13 +43,40 @@ class PencilTool extends DrawingTool {
 }
 
 function getLineObject(line) {
+  // getting center of the shape
+  const points = line.points();
+  let minX = points[0];
+  let maxX = points[0];
+  let minY = points[1];
+  let maxY = points[1];
+  for (let i = 0; i < points.length; i += 2) {
+    const x = points[i];
+    const y = points[i + 1];
+    minX = Math.min(minX, x);
+    maxX = Math.max(maxX, x);
+    minY = Math.min(minY, y);
+    maxY = Math.max(maxY, y);
+  }
+
+  const center_x = (maxX + minX) / 2;
+  const center_y = (maxY + minY) / 2;
+
+  // Adjust points to be relative to the new center
+  const adjustedPoints = points.map((coord, i) => {
+    return i % 2 === 0 ? coord - center_x : coord - center_y;
+  });
+
+
+
   return {
     id: generateShapeId(),
     type: Shapes.FREE_HAND,
     attributes: {
-      points: line.attrs.points,
+      points: adjustedPoints,
       stroke: line.attrs.stroke,
       strokeWidth: line.attrs.strokeWidth,
+      x: center_x, // Center of the shape
+      y: center_y, // Center of the shape
     },
   };
 }

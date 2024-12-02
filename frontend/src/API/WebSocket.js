@@ -1,5 +1,6 @@
 import SockJS from "sockjs-client";
 import { Stomp } from "@stomp/stompjs";
+import transformDtoToShape, { transformShapeToDto } from "./Mappers.js";
 
 
 const Actions = {
@@ -34,12 +35,13 @@ class Room {
     }
 
     applyChange(dto){
+        const obj = transformDtoToShape(dto)
         switch (dto.action) {
             case Actions.ADD:
-                this.localAddSahpe(dto.shape);
+                this.localAddSahpe(obj);
                 break;
             case Actions.MODIFY:
-                this.localModifySahpe(dto.shape);
+                this.localModifySahpe(obj);
                 break;
             case Actions.DELETE:
                 this.localDeleteSahpe(dto.shape.id);
@@ -65,13 +67,9 @@ class Room {
             return;
         }
 
-        const shapeData = {
-          action: action,
-          paintId: this.roomId,
-          shape: shape
-        };
-        console.log('Shape Update:', JSON.stringify(shapeData, null, 2));
-        this.stompClient.send('/app/share', {}, JSON.stringify(shapeData));
+        const dtoShape = transformShapeToDto(shape, this.roomId, action)
+        console.log('Shape Update:', JSON.stringify(dtoShape, null, 2));
+        this.stompClient.send('/app/draw', {}, JSON.stringify(dtoShape));
       };
 
     undo(){
