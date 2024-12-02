@@ -20,7 +20,7 @@ const ShapeComponent = ({ id, type, shapeProps, isSelected, onSelect, onChange, 
     const handleKeyDown = (event) => {
       if (event.key === 'Delete') {
         onDelete();
-      }else if (event.key === 'd'){
+      }else if (event.key === 'c'){
         onDuplicate();
       }
     };
