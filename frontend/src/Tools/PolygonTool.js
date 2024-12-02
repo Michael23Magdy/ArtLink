@@ -61,7 +61,6 @@ class PolygonTool extends DrawingTool {
 
 function getPolygonObject(line) {
   // getting center of the shape
-  // Getting the bounding box center
   const points = line.points();
   let minX = points[0];
   let maxX = points[0];
@@ -94,8 +93,6 @@ function getPolygonObject(line) {
       strokeWidth: line.attrs.strokeWidth,
       x: center_x, // Center of the shape
       y: center_y, // Center of the shape
-      offsetX: 0, // No need for extra offset as points are already relative
-      offsetY: 0, // No need for extra offset
     },
   };
 
