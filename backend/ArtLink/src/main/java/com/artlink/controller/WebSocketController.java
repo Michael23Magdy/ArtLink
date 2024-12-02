@@ -20,12 +20,12 @@ public class WebSocketController {
         this.messagingTemplate = messagingTemplate;
     }
 
-    @MessageMapping("app/draw")
+    @MessageMapping("/draw")
     public void share(String jsonMessage) throws JsonProcessingException {
         DrawingActionDto drawingActionDto = webSocketService.processDrawingAction(jsonMessage);
         messagingTemplate.convertAndSend("/topic/" + drawingActionDto.getPaintId(), drawingActionDto);
     }
-    @MessageMapping("app/undo.redo")
+    @MessageMapping("/undo.redo")
     public void getDrawingActionDto(UndoRedoClientDto undoRedoClientDto) {
         DrawingActionDto dto = webSocketService.processUndoRedoAction(undoRedoClientDto);
         messagingTemplate.convertAndSend("/topic/" + dto.getPaintId(), dto);

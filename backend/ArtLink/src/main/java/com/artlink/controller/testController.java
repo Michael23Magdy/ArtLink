@@ -34,21 +34,21 @@ public class testController {
 
 
 /*
+
 {
     "paintId" : "123",
-    "action" : "added",
-    "type" : "ellipse",
+    "action" : "add",
+    "type" : "polygon",
     "shape" : {
-        "id" : "3",
-        "fill" : "red",
-        "x" : "1",
-        "y" : "1",
-        "stroke":"213",
-        "strokeWidth":"536",
-        "radius" : {
-            "x" : "3" ,
-            "y" : "4"
-        }
+        "id" : "8",
+        "fill" : "4415",
+        "stroke" : "4415",
+        "strokeColor" : "4415",
+        "strokeWidth" : "4415",
+        "rotation" : "4415",
+        "points" : [1,2,3,4,5,6]
     }
 }
+
+
  */

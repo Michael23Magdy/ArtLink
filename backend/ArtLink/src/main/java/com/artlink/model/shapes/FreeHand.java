@@ -7,6 +7,6 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Polygon extends Shape {
+public class FreeHand extends Shape {
     List<Integer> points;
 }

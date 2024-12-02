@@ -8,4 +8,5 @@ public abstract class Shape {
     private String stroke;
     private String strokeColor;
     private String strokeWidth;
+    private String rotation;
 }

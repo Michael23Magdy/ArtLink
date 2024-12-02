@@ -34,6 +34,8 @@ public class ShapesMappingService {
             case "line" -> objectMapper.convertValue(shape, Line.class);
             case "polygon" -> objectMapper.convertValue(shape, Polygon.class);
             case "text" -> objectMapper.convertValue(shape, Text.class);
+            case "triangle" -> objectMapper.convertValue(shape, Triangle.class);
+            case "freehand"-> objectMapper.convertValue(shape, FreeHand.class);
             default -> throw new IllegalArgumentException("Unsupported type: " + type);
         };
     }
