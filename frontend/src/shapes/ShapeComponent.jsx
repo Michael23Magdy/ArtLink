@@ -68,7 +68,7 @@ const ShapeComponent = ({ id, type, shapeProps, isSelected, onSelect, onChange, 
         return(
           <Text 
             {...shapeProps}
-            align= "center"
+            align= "left"
             id={id}
             ref={shapeRef}
             draggable={isSelectMode}

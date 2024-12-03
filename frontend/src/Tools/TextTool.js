@@ -37,7 +37,7 @@ class TextTool extends DrawingTool {
       fontFamily: "Calibri",
       fill: this.fillColor,
       width: 400,
-      align: "center",
+      align: "left",
     });
 
     layer.add(this.text);
