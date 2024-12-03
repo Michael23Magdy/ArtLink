@@ -87,6 +87,7 @@ function CanvasPage(){
                 onImport={handleImport}
                 onUndo={handleUndo}
                 onRedo={handleRedo}
+                roomId={id}
             />
             <img className={styles.logo} src={logo3} alt="Art Link" />
         </>

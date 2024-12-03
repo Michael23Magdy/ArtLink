@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom'
 import PopupModal from '../popupWindow/PopupModal'
 
 
-const ControlMenu = ({ onExportPNG, onExportJSON, onExportXML, onImport, onUndo, onRedo }) => {
+const ControlMenu = ({ onExportPNG, onExportJSON, onExportXML, onImport, onUndo, onRedo ,roomId}) => {
 
     const [exapand, setExpand] = useState(false);
     const inputRef = useRef();
@@ -27,6 +27,15 @@ const ControlMenu = ({ onExportPNG, onExportJSON, onExportXML, onImport, onUndo,
     const openModal = () => setIsOpen(true);
     const closeModal = () => setIsOpen(false);
 
+    const handleCopy = () => {
+        navigator.clipboard.writeText(roomId)
+          .then(() => {
+            alert(`Room Id: ${roomId}\ncopied to clipboard!`);
+          })
+          .catch((err) => {
+            console.error("Failed to copy text: ", err);
+          });
+    };
     return(
         <div className={styles.ControlMenu}>
             <button className={styles.expandBtn} onClick={() => {
@@ -39,7 +48,7 @@ const ControlMenu = ({ onExportPNG, onExportJSON, onExportXML, onImport, onUndo,
             <div className={exapand?styles.expanded:styles.collapsed}>
                 <button onClick={onUndo}><FontAwesomeIcon icon={faRotateLeft} /></button>
                 <button onClick={onRedo}><FontAwesomeIcon icon={faRotateRight} /></button>
-                <button><FontAwesomeIcon icon={faShare} /></button>
+                <button><FontAwesomeIcon icon={faShare} onClick={handleCopy} /></button>
                 <button onClick={() => inputRef.current.click()}><FontAwesomeIcon icon={faFileImport} /></button>
                 <input
                     ref={inputRef}
