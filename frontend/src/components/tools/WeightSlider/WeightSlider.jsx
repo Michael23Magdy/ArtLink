@@ -7,7 +7,7 @@ function WeightSlider({ initialWidth, onWidthChange }) {
   const [width, setWidth] = useState(initialWidth);
 
   const handleInputChange = (e) => {
-    setWidth(e.target.value);
+    setWidth(Number(e.target.value));
   };
 
   // Trigger the parent's callback whenever the width changes
@@ -23,7 +23,7 @@ function WeightSlider({ initialWidth, onWidthChange }) {
         <input
           id="weightSlider"
           type="range"
-          min="1"
+          min="0"
           max="100"
           value={width}
           onChange={handleInputChange}

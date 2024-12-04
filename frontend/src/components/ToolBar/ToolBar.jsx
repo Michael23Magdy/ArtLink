@@ -4,22 +4,25 @@ import {
     faAngleUp,
     faArrowPointer,
     faPencil,
-    faShapes,
-    faBorderTopLeft,
     faImage
 } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react';
 import ColorPicker from '../tools/ColorPicker/ColorPicker';
 import WeightSlider from '../tools/WeightSlider/WeightSlider';
 import ShapeSelector from '../tools/ShapeSelector/ShapeSelector';
+import ToolSelector from '../tools/ToolSelector/ToolSelector';
+import TOOLS from '../../Tools/Tools';
+import { isShape } from '../utils';
 
-function ToolBar(){
+
+function ToolBar({
+    fillColor, setFillColor,
+    strokeColor, setStrokeColor,
+    strokeWidth, setStrokeWidth,
+    selectedTool, setSelectedTool
+  }){
     const [expand, setExpand] = useState(false);
-    const [fillColor, setFillColor] = useState("#00bb00");
-    const [strokeColor, setStrokeColor] = useState("#000000");
-    const [strokeWidth, setStrokeWidth] = useState(2);
-    const [selectedTool, setSelectedTool] = useState()
-
+    
     return (
         <div className={`${styles.ToolBar} ${expand ? '' : styles.translateDown}`}>
             <button 
@@ -29,11 +32,12 @@ function ToolBar(){
                 <FontAwesomeIcon icon={faAngleUp} />
             </button>
             <div className={styles.ToolBtns}>
-                <button><FontAwesomeIcon icon={faArrowPointer} /></button>
-                <button><FontAwesomeIcon icon={faPencil} /></button>
-                <ShapeSelector preselectedTool={selectedTool} onSelect={selectedTool}/>
-                <button><FontAwesomeIcon icon={faImage} /></button>
-                <button>T</button>
+                <button className={selectedTool==TOOLS.SELECT?styles.selected:''} onClick={()=>setSelectedTool(TOOLS.SELECT)}><FontAwesomeIcon icon={faArrowPointer} /></button>
+                <ToolSelector selectedTool={selectedTool} setSelectedTool={setSelectedTool}/>
+                <ShapeSelector selectedTool={selectedTool} setSelectedTool={setSelectedTool}/>
+                <button className={selectedTool==TOOLS.IMAGE?styles.selected:''} onClick={()=>setSelectedTool(TOOLS.IMAGE)}><FontAwesomeIcon icon={faImage} /></button>
+                <button className={selectedTool==TOOLS.TEXT?styles.selected:''} onClick={()=>setSelectedTool(TOOLS.TEXT)}>T</button>
+
                 <WeightSlider initialWidth={strokeWidth} onWidthChange={setStrokeWidth}/>
                 <ColorPicker initialColor={strokeColor} onColorChange={setStrokeColor}/>
                 <ColorPicker initialColor={fillColor} onColorChange={setFillColor}/>

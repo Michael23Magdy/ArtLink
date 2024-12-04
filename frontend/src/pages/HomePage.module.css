@@ -1,0 +1,61 @@
+.container{
+    width: 100vw;
+    height: 100vh;
+
+    background-image: url('../assets/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.brandingSection {
+    text-align: center;
+}
+
+.brandingSection>p {
+    color: #444746;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.2rem;
+}
+
+.logo {
+    height: 70px;
+}
+
+.joinSection{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+}
+
+.joinSection .button{
+    padding: 18px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: var(--main-color);
+    border: none;
+    color: white;
+    cursor: pointer;
+
+    text-decoration: none;
+}
+
+.joinSection .disabled {
+    background-color: #d9d9d9;
+}
+
+.joinSection input{
+    padding: 18px;
+    border-radius: 8px;
+    text-align: center;
+    border: solid 2px #444746;
+    color: #444746;
+}

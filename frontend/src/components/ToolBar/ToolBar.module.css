@@ -3,7 +3,9 @@
     --number-buttons: 8;
     --transition-duration: 0.5s;
 }
-
+button, input {
+    cursor: pointer;
+}
 .ToolBar{
     position: fixed;
     bottom: 10px;
@@ -40,8 +42,10 @@
     border: none;
     font-weight: bold;
 }
-.ToolBar button:hover{
-    background-color: var(--main-color);
+
+.ToolBar button:hover,
+.selected{
+    background-color: var(--main-color) !important;
     color: white;
 }
 
