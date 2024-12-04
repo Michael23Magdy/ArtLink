@@ -35,7 +35,6 @@ function ToolBar({
                 <button className={selectedTool==TOOLS.SELECT?styles.selected:''} onClick={()=>setSelectedTool(TOOLS.SELECT)}><FontAwesomeIcon icon={faArrowPointer} /></button>
                 <ToolSelector selectedTool={selectedTool} setSelectedTool={setSelectedTool}/>
                 <ShapeSelector selectedTool={selectedTool} setSelectedTool={setSelectedTool}/>
-                <button className={selectedTool==TOOLS.IMAGE?styles.selected:''} onClick={()=>setSelectedTool(TOOLS.IMAGE)}><FontAwesomeIcon icon={faImage} /></button>
                 <button className={selectedTool==TOOLS.TEXT?styles.selected:''} onClick={()=>setSelectedTool(TOOLS.TEXT)}>T</button>
 
                 <WeightSlider initialWidth={strokeWidth} onWidthChange={setStrokeWidth}/>

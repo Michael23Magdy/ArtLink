@@ -1,6 +1,6 @@
 :root{
     --button-height: 60px;
-    --number-buttons: 8;
+    --number-buttons: 7;
     --transition-duration: 0.5s;
 }
 button, input {
