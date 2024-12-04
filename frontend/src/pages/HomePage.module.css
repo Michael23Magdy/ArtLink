@@ -28,7 +28,8 @@
     height: 70px;
 }
 
-.joinSection{
+.joinSection,
+.notCompatSection{
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -58,4 +59,13 @@
     text-align: center;
     border: solid 2px #444746;
     color: #444746;
+}
+
+.notCompatSection h1 {
+    color: red;
+    font-size: 0.8rem;
+}
+
+.notCompatSection p {
+    font-size: 0.6rem;
 }
